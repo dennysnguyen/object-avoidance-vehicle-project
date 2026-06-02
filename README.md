@@ -36,7 +36,7 @@ This project implements an autonomous RC vehicle capable of obstacle detection a
 - **Servo.h** - For servo motor control
 
 ### Power System
-- **Battery Pack** (appropriate voltage for motors and electronics)
+- **3 AAA Battery Pack** (appropriate voltage for motors and electronics)
 - **Power Distribution Board** - For supplying regulated power to Arduino and motor driver
 - **Wiring & Connectors** - For all interconnections
 
@@ -57,21 +57,17 @@ This project implements an autonomous RC vehicle capable of obstacle detection a
 *Second iteration with improved component placement and wiring optimization*
 
 ## System Schematic
-![Project Schematic](images/schematic.jpg)
 *Electrical schematic showing exact component connections, pin assignments, and wiring diagram*
+![Project Schematic](images/schematic.jpg)
 
 ## Obstacle Avoidance Algorithm
-![Avoidance Algorithm Flowchart](images/flowchart_avoidance_alg.jpg)
 *Flowchart illustrating the continuous scanning, decision-making, and avoidance maneuver process*
+![Avoidance Algorithm Flowchart](images/flowchart_avoidance_alg.jpg)
 
-## Test Demonstration
-<video width="320" height="240" controls>
-  <source src="https://raw.githubusercontent.com/dennysnguyen/x/main/vid_test/vid_test.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-*Video demonstration showing the vehicle detecting obstacles at 20cm distance and executing avoidance maneuvers*
+## prototype vid test
+https://github.com/user-attachments/assets/8ea76c71-2930-488f-8183-76369b6cd0d5
 
-## How It Works - Detailed Operation
+## How It Works
 
 ### Initialization Phase
 1. **GPIO Setup**: All motor control pins (direction and PWM) configured as outputs
@@ -111,45 +107,3 @@ This project implements an autonomous RC vehicle capable of obstacle detection a
 - When no obstacle detected in immediate path (distance > 20cm): Vehicle moves forward at 70 PWM
 - Continuous scanning ensures real-time response to changing environment
 - System defaults to forward motion when path is clear
-
-## Key Features
-- **Real-time Environmental Scanning**: 360° equivalent coverage via servo sweep (10°-170°)
-- **Dynamic Path Selection**: Continuously updates optimal path based on widest clearance
-- **Proportional Response**: Different avoidance maneuvers based on obstruction severity
-- **Recovery Mechanisms**: Post-turn validation prevents getting stuck in local minima
-- **Configurable Parameters**: Easy adjustment of speeds, distances, and timing via #defines
-- **Robust Sensor Handling**: Graceful treatment of sensor noise and zero readings
-
-## Technical Specifications
-- **Scan Rate**: Approximately 20Hz (50ms delay per loop iteration)
-- **Decision Latency**: Obstacle detection to avoidance initiation < 100ms
-- **Motor PWM Range**: 0-255 (Forward: 70, Turning: 85)
-- **Operating Modes**: Autonomous avoidance with manual override capability
-- **Fail-Safe**: Default to stopped state on initialization failure
-
-## Software Flow Summary
-```
-Setup() Loop()
-  ↓           ↓
-init_GPIO()  Sweep Servo (9° increments)
-             │
-             ↓
-         Measure Distance
-             │
-             ↓
-     Update Best Path
-             │
-             ↓
-  Obstacle? ←───── Yes ───── handleAvoidance()
-             │           ↓
-             │     Back Up → Evaluate Path → Turn
-             │           ↓
-          No ─────── Go Forward ←─────
-             │
-             �
-```
-
-## Notes on Operation
-- The vehicle prioritizes forward motion when safe, switching to avoidance only when obstacles enter the 20cm danger zone
-- Servo continuous sweep enables environmental awareness without requiring additional sensors
-- All timing and distance parameters are configurable at the top of the source code for tuning to specific surfaces and conditions
