@@ -66,7 +66,7 @@ This project implements an autonomous RC vehicle capable of obstacle detection a
 
 ## Test Demonstration
 <video width="320" height="240" controls>
-  <source src="https://raw.githubusercontent.com/dennysnguyen/x/main/vid_test/vid_test.mov" type="video/quicktime">
+  <source src="https://raw.githubusercontent.com/dennysnguyen/x/main/vid_test/vid_test.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 *Video demonstration showing the vehicle detecting obstacles at 20cm distance and executing avoidance maneuvers*
