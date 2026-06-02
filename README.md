@@ -65,7 +65,10 @@ This project implements an autonomous RC vehicle capable of obstacle detection a
 *Flowchart illustrating the continuous scanning, decision-making, and avoidance maneuver process*
 
 ## Test Demonstration
-See the vehicle in action: [Test Video](vid_test/vid_test.mov)
+<video width="320" height="240" controls>
+  <source src="https://raw.githubusercontent.com/dennysnguyen/x/main/vid_test/vid_test.mov" type="video/quicktime">
+  Your browser does not support the video tag.
+</video>
 *Video demonstration showing the vehicle detecting obstacles at 20cm distance and executing avoidance maneuvers*
 
 ## How It Works - Detailed Operation
